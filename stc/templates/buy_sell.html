@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{%  block content %}
+<br><br/>
+<br><br/>
+<form method="post" action="{% url 'buy_sell' %}" class="p-4 bg-white rounded shadow-sm" style="max-width: 400px; margin: auto;">
+    {% csrf_token %}
+    <h3 class="text-center mb-4" style="color: #343a40; font-weight: bold;">Trade Stocks</h3>
+
+    <!-- Ticker Input -->
+    <div class="mb-4">
+        <label for="ticker" class="form-label text-muted">Stock Ticker</label>
+        <input type="text" name="ticker" class="form-control form-control-lg border-0 shadow-sm" placeholder="Enter stock ticker (e.g., AAPL)" required style="background-color: #f8f9fa;">
+    </div>
+
+    <!-- Quantity Input -->
+    <div class="mb-4">
+        <label for="quantity" class="form-label text-muted">Quantity</label>
+        <input type="number" name="quantity" class="form-control form-control-lg border-0 shadow-sm" min="1" placeholder="Enter quantity" required style="background-color: #f8f9fa;">
+    </div>
+
+    <!-- Buy and Sell Buttons -->
+    <div class="d-flex justify-content-between">
+        <button type="submit" name="action" value="buy" class="btn btn-success btn-lg w-100 me-2 d-flex align-items-center justify-content-center" style="background-color: #28a745;">
+            <i class="bi bi-cart-plus me-2"></i> Buy
+        </button>
+        <button type="submit" name="action" value="sell" class="btn btn-danger btn-lg w-100 ms-2 d-flex align-items-center justify-content-center" style="background-color: #dc3545;">
+            <i class="bi bi-cart-dash me-2"></i> Sell
+        </button>
+    </div>
+</form>
+<br><br/>
+<br><br/>
+<br><br/>
+<br><br/>
+
+
+
+
+{% endblock %}

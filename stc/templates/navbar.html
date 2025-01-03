@@ -1,0 +1,125 @@
+
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stylish Navbar</title>
+    <!-- Use Bootstrap CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* Custom Navbar Styles */
+        .navbar {
+            background: linear-gradient(to right, #4a90e2, #007bff);
+            padding: 1rem;
+        }
+        .navbar-brand {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #fff !important;
+        }
+        .nav-link {
+            font-size: 1.1rem;
+            color: #f0f0f0 !important;
+            padding: 0.5rem 1rem;
+        }
+        .nav-link:hover {
+            background-color: #0056b3;
+            border-radius: 8px;
+            color: #ffffff !important;
+        }
+        .btn-outline-dark {
+            color: #fff;
+            border-color: #fff;
+            background-color: transparent;
+        }
+        .btn-outline-dark:hover {
+            color: #000;
+            background-color: #ffffff;
+            border-color: #ffffff;
+        }
+        .navbar-toggler-icon {
+            background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3E%3Cpath stroke='rgba%28173, 181, 189, 0.85%29' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg">
+        <div class="container px-4 px-lg-5">
+            <a class="navbar-brand" href="{% url 'home' %}">Stock Platform</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="{% url 'home'%}">
+                            <span style="color: rgb(249, 249, 0); font-weight: bold;">HOME</span></a>
+                    </li>
+                    {% if user.is_authenticated %}
+                        <li class="nav-item"><a class="nav-link" href="{% url 'logout' %}"> <span style="color: rgb(249, 249, 0); font-weight: bold;">LOGOUT</span>
+                            </a></li>
+
+                            <li class="nav-item"><a class="nav-link" href="{% url 'buy_sell' %}"> <span style="color: rgb(249, 249, 0); font-weight: bold;">BUY & SELL</span>
+                            </a></li>
+                    {% else %}
+                        <li class="nav-item"><a class="nav-link" href="{% url 'login' %}">
+                            <span style="color: rgb(249, 249, 0); font-weight: bold;">LOGIN</span></a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'register' %}"> <span style="color: rgb(249, 249, 0); font-weight: bold;">REGISTER</span>
+                        </a></li>
+                    {% endif %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'forecast' %}">
+                            <span style="color: rgb(242, 255, 55); font-weight: bold;">PREDICTION</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'stock_chart' %}">
+                            <span style="color: rgb(234, 255, 0); font-weight: bold;">GRAPH</span>
+                        </a>
+                    </li> 
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'portfolio' %}">
+                            <span style="color: rgb(234, 255, 0); font-weight: bold;">Portfolio Management</span>
+                        </a>
+                    </li> 
+                </li>
+
+                </ul>
+                <form class="d-flex">
+                    <button class="btn profile-btn" type="button">
+                        <span style="color: rgb(249, 249, 0); font-weight: bold;">PROFILE</span></button>
+                </form>
+                
+                <!-- Custom CSS for the Profile Button -->
+                <style>
+                    .profile-btn {
+                        background: linear-gradient(to right, #4a90e2, #007bff);
+                        color: #ffffff;
+                        font-weight: bold;
+                        padding: 0.5rem 1.5rem;
+                        border: none;
+                        border-radius: 20px;
+                        transition: background 0.3s ease, transform 0.3s ease;
+                    }
+                    .profile-btn:hover {
+                        background: linear-gradient(to right, #0056b3, #003a70);
+                        color: #f0f0f0;
+                        transform: scale(1.05);
+                    }
+                    .profile-btn:focus {
+                        outline: none;
+                        box-shadow: 0 0 10px rgba(0, 123, 255, 0.5);
+                    }
+                </style>
+                
+            </div>
+        </div>
+    </nav>
+
+    <!-- Bootstrap JS and Popper.js -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.min.js"></script>
+</body>
+</html>
